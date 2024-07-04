@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Layout mainClassname="max-w-screen-md mx-auto">
+    <Layout mainClassname="max-w-screen-md md:w-[500px]  mx-auto">
       <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">
         კონტაქტი
       </h1>
