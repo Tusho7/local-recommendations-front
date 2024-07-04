@@ -19,7 +19,6 @@ const Recommendations = () => {
     const fetchRecommendations = async () => {
       try {
         const response = await getRecommendationsByCategoryId(id);
-        console.log(response);
 
         if (Array.isArray(response.data)) {
           setRecommendations(response.data);
