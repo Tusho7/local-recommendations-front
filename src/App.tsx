@@ -5,6 +5,7 @@ import Auth from "./components/Auth";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
+import Recommendations from "./pages/Recommendations";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
           element={
             <PrivateRoute>
               <Contact />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/category/:id"
+          element={
+            <PrivateRoute>
+              <Recommendations />
             </PrivateRoute>
           }
         />
