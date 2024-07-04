@@ -27,8 +27,7 @@ const Login = ({ onForgotPassword }: LoginProps) => {
     const password = target.password.value;
 
     try {
-      const response = await loginUser(email, password);
-      console.log(response);
+      await loginUser(email, password);
       localStorage.setItem("isLogin", "true");
       const { data } = await getUser();
       setUser(data);
