@@ -5,6 +5,13 @@ export interface RecommendationProps {
   address: string;
   phoneNumber: string;
   website: string;
+  User: {
+    firstName: string;
+    lastName: string;
+  };
+  Category: {
+    name: string;
+  };
 }
 
 export interface RecommendationData {

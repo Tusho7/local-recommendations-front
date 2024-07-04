@@ -5,7 +5,7 @@ import { createRecommendation } from "../services/recommendations";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 
-const AddRecommendation = ({ onClose }: ModalProps) => {
+const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
   const categoryId = useParams<{ id: string }>().id;
   const { user } = useUser();
   const [recommendationName, setRecommendationName] = useState("");
@@ -40,6 +40,8 @@ const AddRecommendation = ({ onClose }: ModalProps) => {
       setAddress("");
       setPhoneNumber("");
       setWebsite("");
+      updateRecommendations();
+      onClose();
     } catch (error) {
       console.error("Error adding recommendation:", error);
     } finally {
@@ -82,7 +84,8 @@ const AddRecommendation = ({ onClose }: ModalProps) => {
             value={review}
             onChange={(e) => setReview(e.target.value)}
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+            required
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 resize-none"
           ></textarea>
         </div>
         <div className="mb-4">
@@ -98,7 +101,6 @@ const AddRecommendation = ({ onClose }: ModalProps) => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-            required
           />
         </div>
         <div className="mb-4">
@@ -114,7 +116,6 @@ const AddRecommendation = ({ onClose }: ModalProps) => {
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-            required
           />
         </div>
         <div className="mb-4">
@@ -130,7 +131,6 @@ const AddRecommendation = ({ onClose }: ModalProps) => {
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-            required
           />
         </div>
         {success && (
