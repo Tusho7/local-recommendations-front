@@ -11,6 +11,7 @@ import { RecommendationPropsForProfile } from "../types/recommendation";
 import Loading from "../components/Loading";
 import Modal from "../modals/Modal";
 import EditModal from "../modals/EditRecommendation";
+import UserDetails from "../components/UserDetails";
 
 const Profile = () => {
   const { user } = useUser();
@@ -108,17 +109,7 @@ const Profile = () => {
   return (
     <Layout mainClassname="flex-grow py-8 px-4 xl:px-0">
       <div className="max-w-[1200px] mx-auto">
-        <div className="user-info bg-white p-6 rounded-lg shadow-md mb-6 flex items-center gap-4">
-          <img
-            src={`${import.meta.env.VITE_API_STORAGE}${user?.profilePicture}`}
-            alt="User"
-            className="w-16 h-16 rounded-full object-cover"
-          />
-          <div>
-            <h2 className="text-2xl font-bold mb-2">{`${user?.firstName} ${user?.lastName}`}</h2>
-            <p className="text-gray-600">{user?.email}</p>
-          </div>
-        </div>
+        <UserDetails />
 
         <div className="user-recommendations bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">ჩემი რეკომენდაციები</h2>
