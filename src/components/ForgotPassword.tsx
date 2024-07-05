@@ -70,7 +70,7 @@ const ForgotPassword = ({ onSuccess }: ForgotPasswordProps) => {
         <div className="mt-4 text-sm text-center">
           <span
             onClick={onSuccess}
-            className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer"
+            className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer hover:underline"
           >
             უკან დაბრუნება
           </span>
