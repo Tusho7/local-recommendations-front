@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/UseUser";
 import { addCategoryRequest } from "../services/contact";
-import { ModalProps } from "../types/modal";
+import { ModalOnClose } from "../types/modal";
 import Loading from "../components/Loading";
 
-const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
+const RequestToAddCategory: React.FC<ModalOnClose> = ({ onClose }) => {
   const { user } = useUser();
 
   const [categoryName, setCategoryName] = useState("");

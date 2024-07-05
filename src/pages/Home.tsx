@@ -1,18 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getCategories } from "../services/categories";
 import Layout from "../Layout";
 import { Category } from "../types/category";
 import Modal from "../modals/Modal";
 import RequestToAddCategory from "../modals/RequestToAddCategory";
-import { getRecommendationsByCategoryId } from "../services/recommendations";
-import { RecommendationProps } from "../types/recommendation";
 
 const Home = () => {
-  const { id } = useParams<{ id: string }>();
   const [categories, setCategories] = useState<Category[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [, setRecommendations] = useState<RecommendationProps[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -33,27 +29,6 @@ const Home = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
-
-  const fetchRecommendations = useCallback(async () => {
-    try {
-      const response = await getRecommendationsByCategoryId(id);
-      if (Array.isArray(response.data)) {
-        setRecommendations(response.data);
-      } else {
-        setRecommendations([response.data.message]);
-      }
-    } catch (error) {
-      console.error("Error fetching recommendations:", error);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    fetchRecommendations();
-  }, [fetchRecommendations, id]);
-
-  const updateRecommendations = () => {
-    fetchRecommendations();
   };
 
   return (
@@ -94,7 +69,7 @@ const Home = () => {
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <RequestToAddCategory
           onClose={closeModal}
-          updateRecommendations={updateRecommendations}
+          // updateRecommendations={updateRecommendations}
         />
       </Modal>
     </Layout>
