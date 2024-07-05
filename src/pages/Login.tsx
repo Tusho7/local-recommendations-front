@@ -41,15 +41,16 @@ const Login = ({ onForgotPassword }: LoginProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r bg-gray-400">
       {loading && <Loading />}
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
-          შესვლა
-        </h2>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="space-y-2">
-            <label htmlFor="username" className="sr-only">
+      <div className="max-w-lg w-full bg-white p-10 rounded-xl shadow-lg space-y-8">
+        <h2 className="text-3xl font-bold text-center text-gray-900">შესვლა</h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="relative">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
               ელ-ფოსტა
             </label>
             <input
@@ -58,12 +59,15 @@ const Login = ({ onForgotPassword }: LoginProps) => {
               type="text"
               autoComplete="username"
               required
-              className="block w-full px-4 py-3 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="ელ-ფოსტა"
             />
           </div>
-          <div className="space-y-2">
-            <label htmlFor="password" className="sr-only">
+          <div className="relative">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               პაროლი
             </label>
             <input
@@ -72,11 +76,11 @@ const Login = ({ onForgotPassword }: LoginProps) => {
               type="password"
               autoComplete="current-password"
               required
-              className="block w-full px-4 py-3 border border-gray-300 rounded-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="პაროლი"
             />
           </div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           <button
             type="submit"
             className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -84,18 +88,27 @@ const Login = ({ onForgotPassword }: LoginProps) => {
             შესვლა
           </button>
         </form>
-        <p
-          className="text-center text-md my-5 text-indigo-600 hover:underline font-medium hover:cursor-pointer"
-          onClick={onForgotPassword}
-        >
-          დაგავიწყდა პაროლი?
-        </p>
-
-        <div className="w-full bg-slate-500 h-[1px]"></div>
-
-        <div className="mt-4 text-md rounded-md text-center flex justify-center items-center p-2 bg-green-500 hover:bg-green-700 hover:cursor-pointer text-white w-[70%] mx-auto">
-          <Link to="/register" className="font-medium">
-            ახალი ანგარიშის შექმნა
+        <div className="text-center">
+          <p
+            className="text-indigo-600 hover:underline cursor-pointer text-sm mt-4"
+            onClick={onForgotPassword}
+          >
+            დაგავიწყდა პაროლი?
+          </p>
+        </div>
+        <div className="relative mt-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">ან</span>
+          </div>
+        </div>
+        <div className="mt-6">
+          <Link to="/register">
+            <button className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              ახალი ანგარიშის შექმნა
+            </button>
           </Link>
         </div>
       </div>
