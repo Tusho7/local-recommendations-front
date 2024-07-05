@@ -12,3 +12,11 @@ export const getRecommendationsByCategoryId = async (
 export const createRecommendation = async (data: RecommendationData) => {
   return await axiosInstance.post("/create_recommendation", data);
 };
+
+export const getRecommendationByUserId = async (userId: number | undefined) => {
+  return await axiosInstance.get(`/get_recommendations_by_userId/${userId}`);
+};
+
+export const deleteRecommendationById = async (id: number) => {
+  return await axiosInstance.delete(`/delete_recommendation/${id}`);
+};

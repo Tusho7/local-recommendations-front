@@ -23,3 +23,19 @@ export interface RecommendationData {
   categoryId: string | undefined;
   userId: string | number;
 }
+
+export interface RecommendationPropsForProfile {
+  id: number;
+  name: string;
+  review: string;
+  address: string;
+  phoneNumber: string;
+  website: string;
+  User: {
+    firstName: string;
+    lastName: string;
+  };
+  Category: {
+    name: string;
+  };
+}

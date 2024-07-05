@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Recommendations from "./pages/Recommendations";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -14,10 +15,18 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Registration />} />
         <Route
-          path="*"
+          path="/home"
           element={
             <PrivateRoute>
               <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
             </PrivateRoute>
           }
         />
