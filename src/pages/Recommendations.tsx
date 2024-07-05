@@ -77,13 +77,13 @@ const Recommendations = () => {
               key={index}
               className="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 cursor-pointer"
             >
-              <div
-                className="p-6 flex justify-center items-center"
-                onClick={() => toggleRecommendation(recommendation.id)}
-              >
+              <div className="p-6 ">
                 <h2 className="text-xl font-semibold text-gray-800 group-hover:text-indigo-600 text-center">
                   {recommendation.name ? (
-                    <div>
+                    <div
+                      className="w-full"
+                      onClick={() => toggleRecommendation(recommendation.id)}
+                    >
                       {recommendation.name}
                       <span className="text-sm block text-gray-500">
                         დაამატა {recommendation.User?.firstName}{" "}
