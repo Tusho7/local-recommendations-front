@@ -38,4 +38,6 @@ export interface RecommendationPropsForProfile {
   Category: {
     name: string;
   };
+  categoryId: string | undefined;
+  userId: string | number;
 }

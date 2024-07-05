@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../contexts/UseUser";
 import { addCategoryRequest } from "../services/contact";
 import { ModalProps } from "../types/modal";
+import Loading from "../components/Loading";
 
 const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
   const { user } = useUser();
@@ -9,12 +10,13 @@ const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
   const [categoryName, setCategoryName] = useState("");
   const [comment, setComment] = useState("");
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const userEmail = user?.email || "";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    setLoading(true);
     try {
       await addCategoryRequest({ categoryName, userEmail, comment });
       setSuccess(true);
@@ -22,6 +24,8 @@ const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
       setComment("");
     } catch (error) {
       console.error("Error sending message:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,6 +34,7 @@ const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
       <h2 className="text-3xl font-semibold text-center mb-12">
         კატეგორიის დამატების მოთხოვნა
       </h2>
+      {loading && <Loading />}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
@@ -63,7 +68,7 @@ const RequestToAddCategory: React.FC<ModalProps> = ({ onClose }) => {
           ></textarea>
         </div>
         {success && (
-          <p className="text-green-500 mb-4">
+          <p className="text-green-500 mb-4 text-center">
             მადლობა, თქვენი მოთხოვნა მიღებულია!
           </p>
         )}

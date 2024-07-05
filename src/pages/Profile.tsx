@@ -3,11 +3,14 @@ import Layout from "../Layout";
 import {
   deleteRecommendationById,
   getRecommendationByUserId,
+  updateRecommendationById,
 } from "../services/recommendations";
 import { useUser } from "../contexts/UseUser";
 import Swal from "sweetalert2";
 import { RecommendationPropsForProfile } from "../types/recommendation";
 import Loading from "../components/Loading";
+import Modal from "../modals/Modal";
+import EditModal from "../modals/EditRecommendation";
 
 const Profile = () => {
   const { user } = useUser();
@@ -18,6 +21,8 @@ const Profile = () => {
   const [expandedReviews, setExpandedReviews] = useState<{
     [key: number]: boolean;
   }>({});
+  const [editingRecommendation, setEditingRecommendation] =
+    useState<RecommendationPropsForProfile | null>(null);
 
   const userId = user?.id;
 
@@ -68,6 +73,31 @@ const Profile = () => {
     }
   };
 
+  const handleEdit = (recommendation: RecommendationPropsForProfile) => {
+    setEditingRecommendation(recommendation);
+  };
+
+  const handleSave = async (
+    updatedRecommendation: RecommendationPropsForProfile
+  ) => {
+    try {
+      const response = await updateRecommendationById(
+        updatedRecommendation.id,
+        updatedRecommendation
+      );
+      setRecommendations(
+        recommendations.map((rec) =>
+          rec.id === updatedRecommendation.id ? response.data : rec
+        )
+      );
+      setEditingRecommendation(null);
+      Swal.fire("Success", "Recommendation updated successfully", "success");
+    } catch (error) {
+      console.error("Error updating recommendation:", error);
+      Swal.fire("Error", "Failed to update recommendation", "error");
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -75,6 +105,7 @@ const Profile = () => {
       </div>
     );
   }
+
   return (
     <Layout mainClassname="flex-grow py-8 px-4 xl:px-0">
       <div className="max-w-[1200px] mx-auto">
@@ -145,17 +176,37 @@ const Profile = () => {
                     </a>
                   </p>
                 )}
-                <button
-                  onClick={() => handleDelete(recommendation.id)}
-                  className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-300"
-                >
-                  წაშლა
-                </button>
+                <div className="flex justify-between w-full">
+                  <button
+                    onClick={() => handleEdit(recommendation)}
+                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition duration-300"
+                  >
+                    რედაქტირება
+                  </button>
+                  <button
+                    onClick={() => handleDelete(recommendation.id)}
+                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-300"
+                  >
+                    წაშლა
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+      {editingRecommendation && (
+        <Modal
+          isOpen={!!editingRecommendation}
+          onClose={() => setEditingRecommendation(null)}
+        >
+          <EditModal
+            recommendation={editingRecommendation}
+            onSave={handleSave}
+            onCancel={() => setEditingRecommendation(null)}
+          />
+        </Modal>
+      )}
     </Layout>
   );
 };

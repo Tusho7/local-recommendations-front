@@ -20,3 +20,10 @@ export const getRecommendationByUserId = async (userId: number | undefined) => {
 export const deleteRecommendationById = async (id: number) => {
   return await axiosInstance.delete(`/delete_recommendation/${id}`);
 };
+
+export const updateRecommendationById = async (
+  id: number,
+  data: RecommendationData
+) => {
+  return await axiosInstance.put(`/update_recommendation/${id}`, data);
+};
