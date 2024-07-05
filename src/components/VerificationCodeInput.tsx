@@ -6,9 +6,14 @@ import { Logout, verifyUser } from "../services/api/Auth";
 interface VerificationCodeProps {
   email: string;
   logout?: boolean;
+  className?: string;
 }
 
-const VerificationCodeInput = ({ email, logout }: VerificationCodeProps) => {
+const VerificationCodeInput = ({
+  email,
+  logout,
+  className,
+}: VerificationCodeProps) => {
   const [verificationCode, setVerificationCode] = useState("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -28,7 +33,8 @@ const VerificationCodeInput = ({ email, logout }: VerificationCodeProps) => {
         localStorage.clear();
         window.location.href = "/login";
       } else {
-        navigate("/");
+        localStorage.clear();
+        navigate("/login");
       }
     } catch (error) {
       console.error("Verification failed:", error);
@@ -42,7 +48,7 @@ const VerificationCodeInput = ({ email, logout }: VerificationCodeProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+    <div className={` ${className}`}>
       <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
           შეიყვანეთ ვერიფიკაციის კოდი

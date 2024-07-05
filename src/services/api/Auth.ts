@@ -1,4 +1,5 @@
 import axiosInstance, { formDataInstance } from "../../plugins/axios/index";
+import { UserUpdate } from "../../types/user";
 
 export const InitializeCSRFProtection = async () => {
   return await axiosInstance.get("/sanctum/csrf-cookie");
@@ -27,9 +28,16 @@ export const loginUser = async (email: string, password: string) => {
 };
 
 export const forgotPassword = async (email: string) => {
-  return await axiosInstance.post("/api/auth/forgot_password", { email });
+  return await axiosInstance.post("/api/auth/forgot-password", { email });
 };
 
 export const logoutUser = async () => {
   return await axiosInstance.post("/api/auth/logout");
+};
+
+export const UpdateUser = async (
+  userId: number | undefined,
+  formData: UserUpdate
+) => {
+  return await axiosInstance.put(`/api/auth/${userId}`, formData);
 };
