@@ -127,55 +127,57 @@ const Profile = () => {
             {recommendations.map((recommendation) => (
               <div
                 key={recommendation.id}
-                className="p-4 border rounded-lg hover:shadow-lg transition duration-300 relative"
+                className="p-4 border rounded-lg hover:shadow-lg transition duration-300 relative flex flex-col justify-between"
               >
-                <p className="text-gray-700 mb-2 text-lg">
-                  <strong>კატეგორია:</strong> {recommendation.Category?.name}
-                </p>
-                <h3 className="font-semibold mb-2">
-                  ობიექტი: {recommendation.name}
-                </h3>
+                <div>
+                  <p className="text-gray-700 mb-2 text-lg">
+                    <strong>კატეგორია:</strong> {recommendation.Category?.name}
+                  </p>
+                  <h3 className="font-semibold mb-2">
+                    ობიექტი: {recommendation.name}
+                  </h3>
 
-                <p className="text-gray-700 mb-2">
-                  <p className="font-semibold">შეფასება:</p>
-                  {expandedReviews[recommendation.id] ||
-                  recommendation.review.length <= 50
-                    ? recommendation.review
-                    : `${recommendation.review.slice(0, 50)}...`}
-                  {recommendation.review.length > 50 && (
-                    <button
-                      onClick={() => toggleReview(recommendation.id)}
-                      className="text-blue-500 ml-2"
-                    >
-                      {expandedReviews[recommendation.id]
-                        ? "ნახე ნაკლები"
-                        : "ნახე მეტი"}
-                    </button>
+                  <p className="text-gray-700 mb-2">
+                    <p className="font-semibold">შეფასება:</p>
+                    {expandedReviews[recommendation.id] ||
+                    recommendation.review.length <= 50
+                      ? recommendation.review
+                      : `${recommendation.review.slice(0, 50)}...`}
+                    {recommendation.review.length > 50 && (
+                      <button
+                        onClick={() => toggleReview(recommendation.id)}
+                        className="text-blue-500 ml-2"
+                      >
+                        {expandedReviews[recommendation.id]
+                          ? "ნახე ნაკლები"
+                          : "ნახე მეტი"}
+                      </button>
+                    )}
+                  </p>
+                  {recommendation.address && (
+                    <p className="text-gray-700 mb-2">
+                      <strong>მისამართი:</strong> {recommendation.address}
+                    </p>
                   )}
-                </p>
-                {recommendation.address && (
-                  <p className="text-gray-700 mb-2">
-                    <strong>მისამართი:</strong> {recommendation.address}
-                  </p>
-                )}
-                {recommendation.phoneNumber && (
-                  <p className="text-gray-700 mb-2">
-                    <strong>ტელეფონი:</strong> {recommendation.phoneNumber}
-                  </p>
-                )}
-                {recommendation.website && (
-                  <p className="text-gray-700 mb-2">
-                    <strong>ვებსაიტი:</strong>{" "}
-                    <a
-                      href={recommendation.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 underline"
-                    >
-                      {recommendation.website}
-                    </a>
-                  </p>
-                )}
+                  {recommendation.phoneNumber && (
+                    <p className="text-gray-700 mb-2">
+                      <strong>ტელეფონი:</strong> {recommendation.phoneNumber}
+                    </p>
+                  )}
+                  {recommendation.website && (
+                    <p className="text-gray-700 mb-2">
+                      <strong>ვებსაიტი:</strong>{" "}
+                      <a
+                        href={recommendation.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 underline"
+                      >
+                        {recommendation.website}
+                      </a>
+                    </p>
+                  )}
+                </div>
                 <div className="flex justify-between w-full">
                   <button
                     onClick={() => handleEdit(recommendation)}
