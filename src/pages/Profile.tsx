@@ -62,8 +62,7 @@ const Profile = () => {
 
     if (result.isConfirmed) {
       try {
-        const response = await deleteRecommendationById(id);
-        console.log(response);
+        await deleteRecommendationById(id);
         setRecommendations(recommendations.filter((rec) => rec.id !== id));
         Swal.fire("წაშლილია!", "რეკომენდაცია წარმატებით წაიშალა.", "success");
       } catch (error) {
