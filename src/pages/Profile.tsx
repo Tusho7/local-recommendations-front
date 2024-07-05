@@ -128,7 +128,7 @@ const Profile = () => {
                   </h3>
 
                   <p className="text-gray-700 mb-2">
-                    <p className="font-semibold">შეფასება:</p>
+                    <span className="font-semibold">შეფასება:</span>
                     {expandedReviews[recommendation.id] ||
                     recommendation.review.length <= 50
                       ? recommendation.review
