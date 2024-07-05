@@ -12,6 +12,7 @@ import Loading from "../components/Loading";
 import Modal from "../modals/Modal";
 import EditModal from "../modals/EditRecommendation";
 import UserDetails from "../components/UserDetails";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { user } = useUser();
@@ -190,7 +191,18 @@ const Profile = () => {
                 ))}
               </div>
             ) : (
-              <h1>{"თქვენ არ გაქვთ რეკომენდაციები"}</h1>
+              <div className="flex flex-col gap-1 justify-start">
+                <h1 className="text-lg w-full">
+                  {"თქვენ არ გაქვთ რეკომენდაციები, იხილეთ კატეგორიები."}
+                </h1>
+
+                <Link
+                  to="/home"
+                  className="bg-blue-500 rounded-md text-white w-[120px] p-2"
+                >
+                  კატეგორიები
+                </Link>
+              </div>
             )}
           </div>
         </div>
