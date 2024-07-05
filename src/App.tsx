@@ -7,6 +7,7 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Recommendations from "./pages/Recommendations";
 import Profile from "./pages/Profile";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -14,6 +15,14 @@ function App() {
       <Routes>
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Registration />} />
+        <Route
+          path="*"
+          element={
+            <PrivateRoute>
+              <NotFoundPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/home"
           element={

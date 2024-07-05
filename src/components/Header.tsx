@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="bg-gray-800  shadow-md">
       <div className="px-4 py-4 flex justify-between items-center xl:px-0 max-w-[1200px] mx-auto">
-        <Link to="/" className="text-2xl font-bold text-white">
+        <Link to="/home" className="text-2xl font-bold text-white">
           Local Recommendations
         </Link>
         <nav className="relative">
