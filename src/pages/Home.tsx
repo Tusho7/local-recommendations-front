@@ -67,10 +67,7 @@ const Home = () => {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <RequestToAddCategory
-          onClose={closeModal}
-          // updateRecommendations={updateRecommendations}
-        />
+        <RequestToAddCategory onClose={closeModal} />
       </Modal>
     </Layout>
   );
