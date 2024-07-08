@@ -16,24 +16,64 @@ import NewRecommendations from "./pages/NewRecommendations";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import PrivateAdminRoute from "./components/PrivateAdminRoutes";
+import AdminLayout from "./AdminLayout";
+import AdminRecommendations from "./pages/admin/AdminRecommendations";
+import AdminProfile from "./pages/admin/AdminProfile";
+import AdminCategories from "./pages/admin/AdminCategories";
 function App() {
   return (
     <NotificationProvider>
       <WebSocketProvider />
       <div>
         <Routes>
-          <Route path="/login" element={<Auth />} />
+          <Route path="/" element={<Auth />} />
           <Route path="/register" element={<Registration />} />
 
           <Route path="/admin_login" element={<AdminLogin />} />
+
           <Route
-            path="/admin_dashboard"
+            path="/"
             element={
               <PrivateAdminRoute>
-                <AdminDashboard />
+                <AdminLayout />
               </PrivateAdminRoute>
             }
-          />
+          >
+            <Route
+              path="/admin_dashboard"
+              element={
+                <PrivateAdminRoute>
+                  <AdminDashboard />
+                </PrivateAdminRoute>
+              }
+            />
+            <Route
+              path="/admin_profile"
+              element={
+                <PrivateAdminRoute>
+                  <AdminProfile />
+                </PrivateAdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin_categories"
+              element={
+                <PrivateAdminRoute>
+                  <AdminCategories />
+                </PrivateAdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin_recommendations"
+              element={
+                <PrivateAdminRoute>
+                  <AdminRecommendations />
+                </PrivateAdminRoute>
+              }
+            />
+          </Route>
 
           <Route
             path="*"

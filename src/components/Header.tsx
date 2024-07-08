@@ -14,7 +14,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await logoutUser();
-      window.location.href = "/login";
+      window.location.href = "/";
       localStorage.clear();
     } catch (error) {
       console.log(error);
