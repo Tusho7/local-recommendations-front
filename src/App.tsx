@@ -18,7 +18,7 @@ function App() {
       <WebSocketProvider />
       <div>
         <Routes>
-          <Route path="/" element={<Auth />} />
+          <Route path="/login" element={<Auth />} />
           <Route path="/register" element={<Registration />} />
           <Route
             path="*"
