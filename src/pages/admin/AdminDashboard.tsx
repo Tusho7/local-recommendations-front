@@ -7,6 +7,7 @@ import {
 } from "../../services/admin/total";
 import { totalMetrics } from "../../services/admin/metrics";
 import { ServerMetrics } from "../../types/serverMetrics";
+import WeatherComponent from "../../components/Weather";
 
 const AdminDashboard = () => {
   const { admin } = useAdmin();
@@ -58,10 +59,10 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 flex flex-col gap-10">
       <h1 className="text-4xl text-center mb-8 mt-6">ადმინ პანელი</h1>
 
-      <section className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md mb-8">
+      <section className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-2xl mb-8">
         <div>
           <h1 className="text-2xl text-gray-800">
             მოგესალმებით, <span className="font-semibold">{adminFullName}</span>
@@ -89,7 +90,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-white rounded-lg shadow-md p-6">
+      <div className="mt-8 bg-white rounded-lg shadow-2xl p-6">
         <h2 className="text-2xl font-semibold mb-4">სერვერის მდგომარეობა</h2>
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -112,6 +113,8 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
+
+      <WeatherComponent />
     </div>
   );
 };
