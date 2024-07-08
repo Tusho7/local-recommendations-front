@@ -13,7 +13,7 @@ import { NotificationProvider } from "./contexts/NotificationContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewRecommendations from "./pages/NewRecommendations";
-import AdminLogin from "./pages/AdminLogin";
+import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import PrivateAdminRoute from "./components/PrivateAdminRoutes";
 function App() {

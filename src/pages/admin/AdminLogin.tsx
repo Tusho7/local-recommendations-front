@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginAdmin } from "../services/admin/api/Auth";
-import Loading from "../components/Loading";
-import { getAdmin } from "../services/admin/api/getAdmin";
-import { useAdmin } from "../contexts/UseAdmin";
+import { loginAdmin } from "../../services/admin/api/Auth";
+import Loading from "../../components/Loading";
+import { getAdmin } from "../../services/admin/api/getAdmin";
+import { useAdmin } from "../../contexts/UseAdmin";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
