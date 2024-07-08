@@ -9,9 +9,13 @@ const Footer = () => {
           <a href="/home" className="text-gray-300 hover:text-white">
             მთავარი
           </a>
+          <a href="/profile" className="text-gray-300 hover:text-white">
+            პროფილი
+          </a>
           <a href="/about_us" className="text-gray-300 hover:text-white">
             ჩვენ შესახებ
           </a>
+
           <a href="/contact" className="text-gray-300 hover:text-white">
             კონტაქტი
           </a>
