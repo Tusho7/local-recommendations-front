@@ -17,8 +17,6 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     const updatedNotifications = [...notifications, notification];
     setNotifications(updatedNotifications);
 
-    console.log(updatedNotifications);
-
     localStorage.setItem("notifications", JSON.stringify(updatedNotifications));
     localStorage.setItem("viewed", "false");
 
