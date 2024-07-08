@@ -13,6 +13,9 @@ import { NotificationProvider } from "./contexts/NotificationContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NewRecommendations from "./pages/NewRecommendations";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import PrivateAdminRoute from "./components/PrivateAdminRoutes";
 function App() {
   return (
     <NotificationProvider>
@@ -21,6 +24,17 @@ function App() {
         <Routes>
           <Route path="/login" element={<Auth />} />
           <Route path="/register" element={<Registration />} />
+
+          <Route path="/admin_login" element={<AdminLogin />} />
+          <Route
+            path="/admin_dashboard"
+            element={
+              <PrivateAdminRoute>
+                <AdminDashboard />
+              </PrivateAdminRoute>
+            }
+          />
+
           <Route
             path="*"
             element={
