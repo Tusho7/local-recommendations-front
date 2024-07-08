@@ -17,6 +17,8 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     const updatedNotifications = [...notifications, notification];
     setNotifications(updatedNotifications);
 
+    console.log(updatedNotifications);
+
     localStorage.setItem("notifications", JSON.stringify(updatedNotifications));
 
     toast.success(`დაემატა ახალი რეკომენდაცია: ${notification.name}`, {

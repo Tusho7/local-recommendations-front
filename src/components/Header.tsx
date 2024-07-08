@@ -79,6 +79,25 @@ const Header = () => {
               >
                 კონტაქტი
               </Link>
+
+              <div className="relative">
+                <Link
+                  to="/new_recommendations"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                  onClick={() => setDropdownOpen(false)}
+                >
+                  ახალი რეკომენდაციები
+                </Link>
+
+                {notification.notifications.length > 0 && (
+                  <div className="relative flex justify-between items-center">
+                    <span className="absolute -top-12 right-8 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">
+                      {notification.notifications.length}
+                    </span>
+                  </div>
+                )}
+              </div>
+
               <button
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-start"
                 onClick={handleLogout}

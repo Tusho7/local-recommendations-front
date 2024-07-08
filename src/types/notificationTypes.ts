@@ -3,6 +3,8 @@ import { createContext } from "react";
 export interface Notification {
   message: string;
   name: string;
+  review: string;
+  categoryId: number;
 }
 
 export interface NotificationContextType {

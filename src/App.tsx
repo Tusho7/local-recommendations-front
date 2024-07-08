@@ -12,6 +12,7 @@ import WebSocketProvider from "./utils/WebSocketProvider";
 import { NotificationProvider } from "./contexts/NotificationContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NewRecommendations from "./pages/NewRecommendations";
 function App() {
   return (
     <NotificationProvider>
@@ -65,6 +66,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Recommendations />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/new_recommendations"
+            element={
+              <PrivateRoute>
+                <NewRecommendations />
               </PrivateRoute>
             }
           />
