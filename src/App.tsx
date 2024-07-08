@@ -8,63 +8,70 @@ import Contact from "./pages/Contact";
 import Recommendations from "./pages/Recommendations";
 import Profile from "./pages/Profile";
 import NotFoundPage from "./pages/NotFoundPage";
-
+import WebSocketProvider from "./utils/WebSocketProvider";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/login" element={<Auth />} />
-        <Route path="/register" element={<Registration />} />
-        <Route
-          path="*"
-          element={
-            <PrivateRoute>
-              <NotFoundPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/about_us"
-          element={
-            <PrivateRoute>
-              <AboutUs />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <PrivateRoute>
-              <Contact />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/category/:id"
-          element={
-            <PrivateRoute>
-              <Recommendations />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </div>
+    <NotificationProvider>
+      <WebSocketProvider />
+      <div>
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/register" element={<Registration />} />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute>
+                <NotFoundPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/about_us"
+            element={
+              <PrivateRoute>
+                <AboutUs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <PrivateRoute>
+                <Contact />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/category/:id"
+            element={
+              <PrivateRoute>
+                <Recommendations />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+        <ToastContainer />
+      </div>
+    </NotificationProvider>
   );
 }
 
