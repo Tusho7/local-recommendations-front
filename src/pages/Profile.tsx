@@ -112,11 +112,11 @@ const Profile = () => {
       <div className="max-w-[1200px] mx-auto">
         <UserDetails />
 
-        <div className="user-recommendations bg-white p-6 rounded-lg shadow-md">
+        <div className=" bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4">ჩემი რეკომენდაციები</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="">
             {recommendations.length > 0 ? (
-              <div>
+              <div className="flex gap-5 justify-start flex-wrap w-full">
                 {recommendations.map((recommendation) => (
                   <div
                     key={recommendation.id}

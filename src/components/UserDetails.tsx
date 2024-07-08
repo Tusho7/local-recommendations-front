@@ -16,13 +16,13 @@ const UserDetails = () => {
   };
 
   return (
-    <div className="user-info bg-white p-6 rounded-lg shadow-md mb-6 flex items-center gap-4">
+    <div className="bg-white p-6 rounded-lg shadow-md mb-6 flex items-center gap-4">
       <img
         src={`${import.meta.env.VITE_API_STORAGE}${user?.profilePicture}`}
         alt="User"
         className="w-16 h-16 rounded-full object-cover"
       />
-      <div className="flex justify-between w-full items-center">
+      <div className="flex flex-col md:flex-row justify-between w-full items-center">
         <div>
           <h2 className="text-2xl font-bold mb-2">{`${user?.firstName} ${user?.lastName}`}</h2>
           <p className="text-gray-600">{user?.email}</p>
