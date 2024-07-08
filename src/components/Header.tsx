@@ -21,6 +21,41 @@ const Header = () => {
     }
   };
 
+  const markViewedFunc = () => {
+    const markViewed = localStorage.getItem("viewed");
+
+    if (markViewed === "false") {
+      return (
+        <div className="relative flex justify-between items-center">
+          <span className="absolute -top-12 right-8 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">
+            {notification.notifications.length}
+          </span>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  const secondMarkViewedFunc = () => {
+    const markViewed = localStorage.getItem("viewed");
+
+    if (markViewed === "false") {
+      return (
+        <div className="relative flex justify-between items-center">
+          <span className="absolute -top-11 -right-2 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">
+            {notification.notifications.length}
+          </span>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  const clearNotification = () => {
+    notification.clearNotification();
+  };
   return (
     <header className="bg-gray-800  shadow-md">
       <div className="px-4 py-4 flex justify-between items-center xl:px-0 max-w-[1200px] mx-auto">
@@ -38,19 +73,12 @@ const Header = () => {
               className="w-10 h-10 rounded-full object-cover"
             />
 
-            {notification.notifications.length > 0 && (
-              <div className="relative flex justify-between items-center">
-                <span className="absolute -top-11 -right-2 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">
-                  {notification.notifications.length}
-                </span>
-              </div>
-            )}
+            {secondMarkViewedFunc()}
           </button>
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
               <Profile />
               <div className="w-full bg-slate-600 h-[1px]"></div>
-
               <Link
                 to="/home"
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
@@ -79,25 +107,19 @@ const Header = () => {
               >
                 კონტაქტი
               </Link>
-
               <div className="relative">
                 <Link
                   to="/new_recommendations"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                  onClick={() => setDropdownOpen(false)}
+                  onClick={() => {
+                    setDropdownOpen(false);
+                    clearNotification();
+                  }}
                 >
                   ახალი რეკომენდაციები
                 </Link>
-
-                {notification.notifications.length > 0 && (
-                  <div className="relative flex justify-between items-center">
-                    <span className="absolute -top-12 right-8 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">
-                      {notification.notifications.length}
-                    </span>
-                  </div>
-                )}
               </div>
-
+              {markViewedFunc()}
               <button
                 className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-start"
                 onClick={handleLogout}

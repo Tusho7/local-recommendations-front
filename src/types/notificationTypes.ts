@@ -10,6 +10,7 @@ export interface Notification {
 export interface NotificationContextType {
   notifications: Notification[];
   addNotification: (notification: Notification) => void;
+  clearNotification: () => void;
 }
 
 export const NotificationContext = createContext<

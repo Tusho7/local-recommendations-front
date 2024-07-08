@@ -20,6 +20,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     console.log(updatedNotifications);
 
     localStorage.setItem("notifications", JSON.stringify(updatedNotifications));
+    localStorage.setItem("viewed", "false");
 
     toast.success(`დაემატა ახალი რეკომენდაცია: ${notification.name}`, {
       position: toast.POSITION.TOP_RIGHT,
@@ -27,8 +28,14 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const clearNotification = () => {
+    localStorage.setItem("viewed", "true");
+  };
+
   return (
-    <NotificationContext.Provider value={{ notifications, addNotification }}>
+    <NotificationContext.Provider
+      value={{ notifications, addNotification, clearNotification }}
+    >
       {children}
     </NotificationContext.Provider>
   );
