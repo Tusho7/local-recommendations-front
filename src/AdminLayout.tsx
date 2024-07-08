@@ -43,7 +43,7 @@ const AdminLayout = () => {
     <div className="flex h-screen bg-gray-100">
       <div className="bg-gray-900 text-white w-64 flex flex-col">
         <div className="flex items-center justify-center h-16 bg-gray-800 border-b border-gray-700">
-          <h1 className="text-lg font-semibold">ადმინ პანელი</h1>
+          <h1 className="text-lg font-semibold">Local Recommendations</h1>
         </div>
         <nav className="flex-1 px-4 py-6">
           <ul className="space-y-2">
