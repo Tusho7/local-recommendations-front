@@ -62,7 +62,7 @@ const AdminDashboard = () => {
     <div className="container mx-auto px-4 flex flex-col gap-10">
       <h1 className="text-4xl text-center mb-8 mt-6">ადმინ პანელი</h1>
 
-      <section className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-2xl mb-8">
+      <section className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-2xl text-gray-800">
             მოგესალმებით, <span className="font-semibold">{adminFullName}</span>
