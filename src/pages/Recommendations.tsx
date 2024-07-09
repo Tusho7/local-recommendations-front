@@ -120,36 +120,24 @@ const Recommendations = () => {
                       )}
                     </p>
 
-                    {recommendation.address.length > 0 ? (
+                    {recommendation.address.length > 0 && (
                       <p className="text-gray-700 mb-2">
                         <span className="text-lg font-semibold">
                           მისამართი:
                         </span>{" "}
                         {recommendation.address}
                       </p>
-                    ) : (
-                      <p className="text-red-500 mb-2">
-                        მისამართი არ არის დამატებული
-                      </p>
                     )}
-                    {recommendation.phoneNumber.length > 0 ? (
+                    {recommendation.phoneNumber.length > 0 && (
                       <p className="text-gray-700 mb-2">
                         <span className="text-lg font-semibold">ტელეფონი:</span>{" "}
                         {recommendation.phoneNumber}
                       </p>
-                    ) : (
-                      <p className="text-red-500 mb-2">
-                        ტელეფონი არ არის დამატებული
-                      </p>
                     )}
-                    {recommendation.website.length > 0 ? (
+                    {recommendation.website.length > 0 && (
                       <p className="text-gray-700 mb-2">
                         <span className="text-lg font-semibold">ვებსაიტი:</span>{" "}
                         {recommendation.website}
-                      </p>
-                    ) : (
-                      <p className="text-red-500 mb-2">
-                        ვებსაიტი არ არის დამატებული
                       </p>
                     )}
                     <p className="text-gray-700 mb-2">
