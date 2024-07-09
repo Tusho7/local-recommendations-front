@@ -6,6 +6,7 @@ export interface User {
   profilePicture: File;
   isVerified?: boolean;
   password?: string;
+  isBlocked: boolean;
 }
 
 export interface UserContextType {

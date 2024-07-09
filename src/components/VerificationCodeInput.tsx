@@ -31,10 +31,10 @@ const VerificationCodeInput = ({
       if (logout) {
         Logout();
         localStorage.clear();
-        window.location.href = "/login";
+        window.location.href = "/";
       } else {
         localStorage.clear();
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       console.error("Verification failed:", error);
