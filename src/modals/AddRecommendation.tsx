@@ -107,6 +107,7 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
 
         <div className="flex flex-col gap-5 mb-10">
           <button
+            type="button"
             className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             onClick={handleAddress}
           >
@@ -114,6 +115,7 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
           </button>
 
           <button
+            type="button"
             className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             onClick={handlePhoneNumber}
           >
@@ -121,6 +123,7 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
           </button>
 
           <button
+            type="button"
             className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             onClick={handleWebsite}
           >
