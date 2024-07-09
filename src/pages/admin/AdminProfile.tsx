@@ -3,8 +3,10 @@ import { useAdmin } from "../../contexts/UseAdmin";
 import { UpdateAdmin } from "../../services/admin/api/Auth";
 import Swal from "sweetalert2";
 import { AdminUpdate } from "../../types/admin";
+import { useNavigate } from "react-router-dom";
 
 const AdminProfile = () => {
+  const navigate = useNavigate();
   const { admin } = useAdmin();
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -46,13 +48,14 @@ const AdminProfile = () => {
       setNewEmail("");
       setPasswordError("");
       setError("");
+      localStorage.clear();
       Swal.fire({
         icon: "success",
         title: "პროფილი განახლდა",
         text: "პროფილი წარმატებით განხლდა",
       });
+      navigate("/admin_login");
     } catch (error) {
-      console.error("Error updating credentials:", error);
       if (
         error.response &&
         error.response.data &&
