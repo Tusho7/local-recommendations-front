@@ -7,3 +7,7 @@ export const getUsers = async () => {
 export const blockUnblockUser = async (id: number) => {
   return await axiosInstance.patch(`/api/auth/block_unblock/${id}`);
 };
+
+export const deleteUser = async (id: number) => {
+  return await axiosInstance.delete(`/api/auth/delete_user/${id}`);
+};

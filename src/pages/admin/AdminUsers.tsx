@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { blockUnblockUser, getUsers } from "../../services/admin/users";
+import {
+  blockUnblockUser,
+  deleteUser,
+  getUsers,
+} from "../../services/admin/users";
 import { User } from "../../types/user";
 import Swal from "sweetalert2";
 
@@ -84,6 +88,32 @@ const AdminUsers = () => {
     setSearchQuery(event.target.value);
   };
 
+  const handleDeleteUser = async (id: number) => {
+    const result = await Swal.fire({
+      title: "დარწმუნებული ხარ?",
+      text: "მომხმარებელი წაიშლება!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "დიახ",
+      cancelButtonText: "გაუქმება",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteUser(id);
+        const updatedUsers = users.filter((user) => user.id !== id);
+        setUsers(updatedUsers);
+        setFilteredUsers(updatedUsers);
+        Swal.fire("წარმატება!", "მომხმარებელი წაიშალა!", "success");
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        Swal.fire("შეცდომა!", "მომხმარებლის წაშლა ვერ მოხერხდა.", "error");
+      }
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">მომხმარებლები</h1>
@@ -135,12 +165,18 @@ const AdminUsers = () => {
               </p>
             </div>
             <button
-              onClick={() => handleToggleBlockUser(user.id, user?.isBlocked)}
+              onClick={() => handleToggleBlockUser(user.id, user.isBlocked)}
               className={`${
                 user.isBlocked ? "bg-green-500" : "bg-red-500"
-              } text-white px-2 py-1 rounded hover:bg-opacity-80 transition duration-300 mt-4`}
+              } text-white px-2 py-1 rounded hover:bg-opacity-80 transition duration-300 mt-4 mr-2`}
             >
               {user.isBlocked ? "განბლოკვა" : "დაბლოკვა"}
+            </button>
+            <button
+              onClick={() => handleDeleteUser(user.id)}
+              className="bg-red-500 text-white px-2 py-1 rounded hover:bg-opacity-80 transition duration-300 mt-4"
+            >
+              წაშლა
             </button>
           </div>
         ))}
