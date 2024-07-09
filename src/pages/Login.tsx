@@ -33,8 +33,15 @@ const Login = ({ onForgotPassword }: LoginProps) => {
       setUser(data);
       navigate("/home");
     } catch (error) {
-      console.error("Login failed:", error);
-      setError("Invalid username or password. Please try again.");
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("Server Error. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
