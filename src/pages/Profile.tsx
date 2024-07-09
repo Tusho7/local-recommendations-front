@@ -127,7 +127,7 @@ const Profile = () => {
                       {recommendation.Category?.name}
                     </p>
                     <h3 className="text-gray-800 font-semibold mb-2">
-                      <strong>ობიექტი:</strong> {recommendation.Category?.name}
+                      <strong>ობიექტი:</strong> {recommendation.name}
                     </h3>
                     <p className="text-gray-700 mb-2">
                       <span className="font-semibold">შეფასება:</span>{" "}
