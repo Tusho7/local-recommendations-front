@@ -11,8 +11,7 @@ export interface AdminContextType {
 }
 
 export interface AdminUpdate {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  currentPassword: string;
+  newPassword: string;
+  newEmail: string;
 }
