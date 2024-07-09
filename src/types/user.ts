@@ -4,6 +4,8 @@ export interface User {
   firstName: string;
   lastName: string;
   profilePicture: File;
+  isVerified?: boolean;
+  password?: string;
 }
 
 export interface UserContextType {

@@ -21,6 +21,9 @@ const AdminLayout = () => {
       case "recommendations":
         navigate("/admin_recommendations");
         break;
+      case "users":
+        navigate("/admin_users");
+        break;
       case "logout":
         await handleLogout();
         break;
@@ -84,6 +87,16 @@ const AdminLayout = () => {
               onClick={() => handleNavItemChange("recommendations")}
             >
               რეკომენდაციები
+            </li>
+            <li
+              className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-200 ${
+                selectedNavItem === "users"
+                  ? "bg-gray-700"
+                  : "hover:bg-gray-700"
+              }`}
+              onClick={() => handleNavItemChange("users")}
+            >
+              მომხმარებლები
             </li>
             <li
               className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-200 ${

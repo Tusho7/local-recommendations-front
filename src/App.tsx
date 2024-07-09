@@ -20,6 +20,7 @@ import AdminLayout from "./AdminLayout";
 import AdminRecommendations from "./pages/admin/AdminRecommendations";
 import AdminProfile from "./pages/admin/AdminProfile";
 import AdminCategories from "./pages/admin/AdminCategories";
+import AdminUsers from "./pages/admin/AdminUsers";
 function App() {
   return (
     <NotificationProvider>
@@ -47,6 +48,7 @@ function App() {
                 </PrivateAdminRoute>
               }
             />
+
             <Route
               path="/admin_profile"
               element={
@@ -70,6 +72,14 @@ function App() {
               element={
                 <PrivateAdminRoute>
                   <AdminRecommendations />
+                </PrivateAdminRoute>
+              }
+            />
+            <Route
+              path="/admin_users"
+              element={
+                <PrivateAdminRoute>
+                  <AdminUsers />
                 </PrivateAdminRoute>
               }
             />
