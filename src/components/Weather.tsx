@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SunIcon from "../dynamicIcons.tsx/Sun";
+import SunIcon from "../dynamicIcons/Sun";
 import { weather } from "../services/admin/weather";
 import { WeatherData } from "../types/weather";
 
