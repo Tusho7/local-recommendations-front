@@ -109,102 +109,97 @@ const Profile = () => {
 
   return (
     <Layout mainClassname="flex-grow py-8 px-4 xl:px-0">
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-5xl mx-auto">
         <UserDetails />
 
-        <div className=" bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4">ჩემი რეკომენდაციები</h2>
-          <div className="">
-            {recommendations.length > 0 ? (
-              <div className="flex gap-5 justify-start flex-wrap w-full">
-                {recommendations.map((recommendation) => (
-                  <div
-                    key={recommendation.id}
-                    className="p-4 border rounded-lg hover:shadow-lg transition duration-300 relative flex flex-col justify-between"
-                  >
-                    <div>
-                      <p className="text-gray-700 mb-2 text-lg">
-                        <strong>კატეგორია:</strong>{" "}
-                        {recommendation.Category?.name}
-                      </p>
-                      <h3 className="font-semibold mb-2">
-                        ობიექტი: {recommendation.name}
-                      </h3>
-
-                      <p className="text-gray-700 mb-2">
-                        <span className="font-semibold">შეფასება:</span>
-                        {expandedReviews[recommendation.id] ||
-                        recommendation.review.length <= 50
-                          ? recommendation.review
-                          : `${recommendation.review.slice(0, 50)}...`}
-                        {recommendation.review.length > 50 && (
-                          <button
-                            onClick={() => toggleReview(recommendation.id)}
-                            className="text-blue-500 ml-2"
-                          >
-                            {expandedReviews[recommendation.id]
-                              ? "ნახე ნაკლები"
-                              : "ნახე მეტი"}
-                          </button>
-                        )}
-                      </p>
-                      {recommendation.address && (
-                        <p className="text-gray-700 mb-2">
-                          <strong>მისამართი:</strong> {recommendation.address}
-                        </p>
-                      )}
-                      {recommendation.phoneNumber && (
-                        <p className="text-gray-700 mb-2">
-                          <strong>ტელეფონი:</strong>{" "}
-                          {recommendation.phoneNumber}
-                        </p>
-                      )}
-                      {recommendation.website && (
-                        <p className="text-gray-700 mb-2">
-                          <strong>ვებსაიტი:</strong>{" "}
-                          <a
-                            href={recommendation.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 underline"
-                          >
-                            {recommendation.website}
-                          </a>
-                        </p>
-                      )}
-                    </div>
-                    <div className="flex justify-between w-full">
-                      <button
-                        onClick={() => handleEdit(recommendation)}
-                        className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition duration-300"
-                      >
-                        რედაქტირება
-                      </button>
-                      <button
-                        onClick={() => handleDelete(recommendation.id)}
-                        className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-300"
-                      >
-                        წაშლა
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-col gap-1 justify-start">
-                <h1 className="text-lg w-full">
-                  {"თქვენ არ გაქვთ რეკომენდაციები, იხილეთ კატეგორიები."}
-                </h1>
-
-                <Link
-                  to="/home"
-                  className="bg-blue-500 rounded-md text-white w-[120px] p-2"
+        <div className="bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-6">ჩემი დამატებული ობიექტები</h2>
+          {recommendations.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recommendations.map((recommendation) => (
+                <div
+                  key={recommendation.id}
+                  className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
                 >
-                  კატეგორიები
-                </Link>
-              </div>
-            )}
-          </div>
+                  <div>
+                    <p className="text-gray-700 mb-2 text-lg">
+                      <strong>კატეგორია:</strong>{" "}
+                      {recommendation.Category?.name}
+                    </p>
+                    <h3 className="text-gray-800 font-semibold mb-2">
+                      <strong>ობიექტი:</strong> {recommendation.Category?.name}
+                    </h3>
+                    <p className="text-gray-700 mb-2">
+                      <span className="font-semibold">შეფასება:</span>{" "}
+                      {expandedReviews[recommendation.id] ||
+                      recommendation.review.length <= 50
+                        ? recommendation.review
+                        : `${recommendation.review.slice(0, 50)}...`}
+                      {recommendation.review.length > 50 && (
+                        <button
+                          onClick={() => toggleReview(recommendation.id)}
+                          className="text-blue-500 ml-2"
+                        >
+                          {expandedReviews[recommendation.id]
+                            ? "ნახე ნაკლები"
+                            : "ნახე მეტი"}
+                        </button>
+                      )}
+                    </p>
+                    {recommendation.address && (
+                      <p className="text-gray-700 mb-2">
+                        <strong>მისამართი:</strong> {recommendation.address}
+                      </p>
+                    )}
+                    {recommendation.phoneNumber && (
+                      <p className="text-gray-700 mb-2">
+                        <strong>ტელეფონი:</strong> {recommendation.phoneNumber}
+                      </p>
+                    )}
+                    {recommendation.website && (
+                      <p className="text-gray-700 mb-2">
+                        <strong>ვებსაიტი:</strong>{" "}
+                        <a
+                          href={recommendation.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 underline"
+                        >
+                          {recommendation.website}
+                        </a>
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex justify-between mt-4">
+                    <button
+                      onClick={() => handleEdit(recommendation)}
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                    >
+                      რედაქტირება
+                    </button>
+                    <button
+                      onClick={() => handleDelete(recommendation.id)}
+                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300"
+                    >
+                      წაშლა
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center">
+              <h1 className="text-lg mb-4">
+                {"თქვენ არ გაქვთ დამატებული ობიექტი, იხილეთ კატეგორიები."}
+              </h1>
+              <Link
+                to="/home"
+                className="bg-blue-500 rounded-md text-white px-4 py-2 hover:bg-blue-600 transition duration-300"
+              >
+                კატეგორიები
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       {editingRecommendation && (
