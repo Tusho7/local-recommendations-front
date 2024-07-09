@@ -61,12 +61,12 @@ const Recommendations = () => {
       {loading && <Loading />}
 
       <div className="flex justify-between items-center gap-4 mb-4 max-w-[1200px] mx-auto">
-        <h1 className="text-2xl font-bold">რეკომენდაციები</h1>
+        <h1 className="text-2xl font-bold">ობიექტები</h1>
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300"
           onClick={openModal}
         >
-          დაამატე რეკომენდაცია
+          დაამატე ობიექტი და შეფასება
         </button>
       </div>
 

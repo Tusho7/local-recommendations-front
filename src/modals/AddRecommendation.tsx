@@ -52,7 +52,7 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
   return (
     <div>
       <h2 className="text-3xl font-semibold text-center mb-12">
-        რეკომენდაციის დამატება
+        ობიექტის დამატება
       </h2>
       {loading && <Loading />}
       <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
             htmlFor="recommendationName"
             className="block text-gray-700 font-semibold mb-2"
           >
-            რეკომენდაციის სახელი:
+            ობიექტის სახელი:
           </label>
           <input
             type="text"

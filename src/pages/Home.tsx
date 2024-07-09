@@ -36,9 +36,9 @@ const Home = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">კატეგორიები</h1>
-          <p className="text-gray-600">
-            მოგესალმებით! შექმენით რეკომენდაციები კატეგორიებში და გაგვიზიარეთ
-            თქვენი შეფასება.
+          <p className="text-gray-600 max-w-[500px] text-center mx-auto">
+            მოგესალმებით! გააკეთეთ ობიექტების რეკომენდაციები კატეგორიებში და
+            გაგვიზიარეთ თქვენი შეფასება.
           </p>
           <p className="text-gray-600 mt-2">ვერ იპოვე სასურველი კატეგორია? </p>
           <button
