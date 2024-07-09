@@ -39,7 +39,7 @@ instance.interceptors.response.use(
     const status = error.response.status;
     if (status === 401) {
       localStorage.setItem("isLogin", "false");
-      handleNavigation("/login");
+      handleNavigation("/");
     }
     return Promise.reject(error);
   }

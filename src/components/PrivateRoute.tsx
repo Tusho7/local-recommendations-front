@@ -8,7 +8,7 @@ interface PrivateRouteProps {
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const isAuth = localStorage.getItem("isLogin") === "true";
 
-  return isAuth ? <>{children}</> : <Navigate to="/login" />;
+  return isAuth ? <>{children}</> : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
