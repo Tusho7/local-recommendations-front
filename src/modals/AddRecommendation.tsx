@@ -16,6 +16,10 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [isAddress, setIsAddress] = useState(false);
+  const [isPhoneNumber, setIsPhoneNumber] = useState(false);
+  const [isWebsite, setIsWebsite] = useState(false);
+
   const userId = user?.id || "";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,6 +51,18 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddress = () => {
+    setIsAddress((prev) => !prev);
+  };
+
+  const handlePhoneNumber = () => {
+    setIsPhoneNumber((prev) => !prev);
+  };
+
+  const handleWebsite = () => {
+    setIsWebsite((prev) => !prev);
   };
 
   return (
@@ -88,51 +104,84 @@ const AddRecommendation = ({ onClose, updateRecommendations }: ModalProps) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 resize-none"
           ></textarea>
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="address"
-            className="block text-gray-700 font-semibold mb-2"
+
+        <div className="flex flex-col gap-5 mb-10">
+          <button
+            className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onClick={handleAddress}
           >
-            მისამართი:
-          </label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="phoneNumber"
-            className="block text-gray-700 font-semibold mb-2"
+            ააქვს მისამართი?
+          </button>
+
+          <button
+            className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onClick={handlePhoneNumber}
           >
-            ტელ.ნომერი:
-          </label>
-          <input
-            type="text"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="website"
-            className="block text-gray-700 font-semibold mb-2"
+            ტელ.ნომერი ?
+          </button>
+
+          <button
+            className="px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            onClick={handleWebsite}
           >
-            ვებგვერდის მისამართი:
-          </label>
-          <input
-            type="text"
-            id="website"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
-          />
+            ვებგვერდის მისამართი ?
+          </button>
         </div>
+
+        {isAddress && (
+          <div className="mb-4">
+            <label
+              htmlFor="address"
+              className="block text-gray-700 font-semibold mb-2"
+            >
+              მისამართი:
+            </label>
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+        )}
+
+        {isPhoneNumber && (
+          <div className="mb-4">
+            <label
+              htmlFor="phoneNumber"
+              className="block text-gray-700 font-semibold mb-2"
+            >
+              ტელ.ნომერი:
+            </label>
+            <input
+              type="text"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+        )}
+
+        {isWebsite && (
+          <div className="mb-4">
+            <label
+              htmlFor="website"
+              className="block text-gray-700 font-semibold mb-2"
+            >
+              ვებგვერდის მისამართი:
+            </label>
+            <input
+              type="text"
+              id="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+        )}
+
         {success && (
           <p className="text-green-500 mb-4 text-center">წარმატებით დაემატა!</p>
         )}
