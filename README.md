@@ -33,7 +33,7 @@
 1. First of all you need to clone app repository from Github :
 
 ```
-git clone https://github.com/Tusho7/local-recommendations-api
+git clone https://github.com/Tusho7/local-recommendations-front
 ```
 
 2. Next step requires install all the dependencies.
