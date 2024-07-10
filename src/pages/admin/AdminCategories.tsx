@@ -12,6 +12,7 @@ const AdminCategories = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [editMode, setEditMode] = useState<number | null>(null);
   const [newCategoryName, setNewCategoryName] = useState<string>("");
+  const [editCategoryName, setEditCategoryName] = useState<string>("");
 
   useEffect(() => {
     fetchCategories();
@@ -30,7 +31,7 @@ const AdminCategories = () => {
     try {
       await deleteCategory(id);
       setCategories(categories.filter((category) => category.id !== id));
-      Swal.fire("Deleted!", "Your category has been deleted.", "success");
+      Swal.fire("წაიშალა!", "კატეგორია წარმატებით წაიშალა.", "success");
     } catch (error) {
       console.error("Error deleting category:", error);
       Swal.fire("Error!", `Failed to delete category: ${error}`, "error");
@@ -40,12 +41,12 @@ const AdminCategories = () => {
   const handleEditCategory = async (id: number) => {
     try {
       await updateCategory(id, {
-        name: newCategoryName,
+        name: editCategoryName,
       });
       setEditMode(null);
-      setNewCategoryName("");
+      setEditCategoryName("");
       fetchCategories();
-      Swal.fire("Updated!", "Your category has been updated.", "success");
+      Swal.fire("განახლება!", "კატეგორია წარმატებით განახლდა.", "success");
     } catch (error) {
       console.error("Error updating category:", error);
       Swal.fire("Error!", `Failed to update category: ${error}`, "error");
@@ -54,11 +55,15 @@ const AdminCategories = () => {
 
   const cancelEdit = () => {
     setEditMode(null);
-    setNewCategoryName("");
+    setEditCategoryName("");
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewCategoryName(event.target.value);
+    if (editMode !== null) {
+      setEditCategoryName(event.target.value);
+    } else {
+      setNewCategoryName(event.target.value);
+    }
   };
 
   const handleAddCategory = async () => {
@@ -118,8 +123,8 @@ const AdminCategories = () => {
                   <input
                     type="text"
                     className="border rounded px-2 py-1 mb-2 w-full"
-                    value={newCategoryName}
-                    onChange={handleInputChange}
+                    value={editCategoryName}
+                    onChange={(e) => setEditCategoryName(e.target.value)}
                   />
                   <div className="flex justify-between">
                     <button
@@ -153,7 +158,7 @@ const AdminCategories = () => {
                       className="text-md text-blue-500 hover:text-blue-700 focus:outline-none transition duration-300"
                       onClick={() => {
                         setEditMode(category.id);
-                        setNewCategoryName(category.name);
+                        setEditCategoryName(category.name);
                       }}
                     >
                       რედაქტირება
