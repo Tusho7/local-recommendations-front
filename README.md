@@ -83,54 +83,30 @@ npm run build
 
 after this you can use this file to deploy project on server.
 
-#
+### Assets: Contains static assets like images and fonts.
 
-assets: Contains static assets like images and fonts.
+### Components: Reusable React components.
 
-#
+### Contexts: Context providers for managing global state.
 
-components: Reusable React components.
+### Modals: Modal components used in various pages.
 
-#
+### Pages: Page components representing different views in the app.
 
-contexts: Context providers for managing global state.
+### Plugins: Plugins used within the application.
 
-#
+### Services: Service functions for API calls and other functionalities.
 
-modals: Modal components used in various pages.
+### Types: TypeScript interfaces and types.
 
-#
+### Utils: Utility functions and helpers.
 
-pages: Page components representing different views in the app.
+### App.tsx: Main application component.
 
-#
+### Index.tsx: Entry point file for the React app.
 
-plugins: Plugins used within the application.
+### Main.tsx: Main file for rendering the React application.
 
-#
-
-services: Service functions for API calls and other functionalities.
-
-#
-
-types: TypeScript interfaces and types.
-
-#
-
-utils: Utility functions and helpers.
-
-#
-
-App.tsx: Main application component.
-
-#
-
-index.tsx: Entry point file for the React app.
-
-#
-
-main.tsx: Main file for rendering the React application.
-
-#
+###
 
 This README template provides a clear structure and instructions for setting up and understanding your Local Recommendation's Platform Frontend project. Adjust the sections and details according to your specific project setup and requirements.
